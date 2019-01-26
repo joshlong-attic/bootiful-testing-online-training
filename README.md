@@ -1,6 +1,6 @@
 # Bootiful Testing 
 
-This is the rough outline for my "Bootiful Testing" talk, first presented here [https://learning.oreilly.com/live-training/courses/bootiful-testing/0636920239550/] in this longer format. 
+This is the rough outline for my "Bootiful Testing" talk, first presented [here](https://learning.oreilly.com/live-training/courses/bootiful-testing/0636920239550/) in this longer format. 
 
 * the test pyramid
 * test-driven development 
