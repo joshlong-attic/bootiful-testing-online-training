@@ -1,0 +1,6 @@
+---
+applications:
+  - name: btot-customer-service
+#    random-route: true
+    instances: 1
+    path: /Users/joshlong/Desktop/testing-101/customer-service/target/customer-service-0.0.1-SNAPSHOT.jar
