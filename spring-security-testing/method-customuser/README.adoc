@@ -1,0 +1,3 @@
+image::https://travis-ci.org/spring-security-livelessons/hello-security.svg?branch=master["Build Status", link="https://travis-ci.org/spring-security-livelessons/hello-security.svg?branch=master"]
+
+Spring Security Hello World Sample

@@ -1,0 +1,5 @@
+image:https://travis-ci.org/spring-security-livelessons/testing.svg?branch=master["Build Status", link="https://travis-ci.org/spring-security-livelessons/testing"]
+
+= Spring Security Live Lessons: Testing
+
+The testing code for Spring Security Live Lessons
