@@ -104,5 +104,4 @@ public class CustomerItApplicationTests {
 			.create(deleteIfExists)
 			.verifyComplete();
 	}
-
 }

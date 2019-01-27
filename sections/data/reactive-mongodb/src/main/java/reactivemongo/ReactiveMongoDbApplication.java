@@ -10,9 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Flux;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
+
 @SpringBootApplication
 public class ReactiveMongoDbApplication {
 
@@ -20,7 +18,6 @@ public class ReactiveMongoDbApplication {
 		SpringApplication.run(ReactiveMongoDbApplication.class, args);
 	}
 }
-
 
 interface PetRepository extends ReactiveMongoRepository<Pet, String> {
 	Flux<Pet> findByName(String name);
