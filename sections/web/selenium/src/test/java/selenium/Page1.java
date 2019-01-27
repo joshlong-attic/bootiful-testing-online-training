@@ -14,6 +14,6 @@ public class Page1 {
 	}
 
 	public String title() {
-		return (this.driver.getTitle());
+		return this.driver.getTitle();
 	}
 }
