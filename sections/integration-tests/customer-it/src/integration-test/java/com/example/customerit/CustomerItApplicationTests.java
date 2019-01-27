@@ -72,7 +72,7 @@ public class CustomerItApplicationTests {
 			.doOnNext(applicationSummary ->
 				log.info("found " + applicationSummary.getName() + " with URL " +
 					applicationSummary.getUrls().iterator().next() + " to delete."))
-			.flatMap(as -> this.cloudFoundryOperations
+			.flatMap(as -> cloudFoundryOperations
 				.applications()
 				.delete(
 					DeleteApplicationRequest
@@ -100,9 +100,9 @@ public class CustomerItApplicationTests {
 		BDDAssertions.then(customerById.getLastName()).isEqualTo("a");
 		BDDAssertions.then(customerById.getEmail()).isEqualTo("a@a.com");
 
-		//		StepVerifier
-//			.create(deleteIfExists)
-//			.verifyComplete();
+		StepVerifier
+			.create(deleteIfExists)
+			.verifyComplete();
 	}
 
 }
