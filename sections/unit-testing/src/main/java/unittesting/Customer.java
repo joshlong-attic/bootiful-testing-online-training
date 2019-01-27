@@ -1,4 +1,4 @@
-package com.example.unittesting;
+package unittesting;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
