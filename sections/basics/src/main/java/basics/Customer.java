@@ -1,4 +1,4 @@
-package unittesting;
+package basics;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

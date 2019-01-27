@@ -1,4 +1,4 @@
-package unittesting;
+package basics;
 
 import org.assertj.core.api.Assertions;
 import org.hamcrest.Matchers;
