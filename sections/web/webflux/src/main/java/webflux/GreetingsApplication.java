@@ -16,12 +16,8 @@ import static org.springframework.web.reactive.function.server.RequestPredicates
 import static org.springframework.web.reactive.function.server.RouterFunctions.route;
 import static org.springframework.web.reactive.function.server.ServerResponse.ok;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
 @SpringBootApplication
 public class GreetingsApplication {
-
 
 	@Bean
 	RouterFunction<ServerResponse> routes() {
@@ -31,8 +27,7 @@ public class GreetingsApplication {
 	}
 
 	private Publisher<Greeting> greetingPublisher(String name) {
-		Greeting g = new Greeting(this.doGreeting(name));
-		return Mono.just(g);
+		return Mono.just(new Greeting(this.doGreeting(name)));
 	}
 
 	private String doGreeting(String name) {
