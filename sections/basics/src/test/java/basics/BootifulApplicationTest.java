@@ -9,9 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class BootifulApplicationTest {
@@ -23,10 +20,9 @@ public class BootifulApplicationTest {
 	private Bar bar;
 
 	@Test
-	public void mocks() throws Exception {
+	public void mocks() {
 		String value = "Mock Bar!";
-		Mockito.when(this.bar.getName())
-			.thenReturn(value);
+		Mockito.when(this.bar.getName()).thenReturn(value);
 		String toString = this.foo.toString();
 		Assertions.assertThat(toString).contains(value);
 	}
