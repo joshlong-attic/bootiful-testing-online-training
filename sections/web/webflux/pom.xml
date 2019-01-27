@@ -9,8 +9,8 @@
         <version>2.1.2.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>   webflux </artifactId>
+    <groupId>bt</groupId>
+    <artifactId>webflux</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <properties>
         <java.version>1.8</java.version>
