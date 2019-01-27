@@ -9,12 +9,11 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>unit-testing</module>
+        <module>basics</module>
         <module>data</module>
         <module>web</module>
-        <!--
-        <module>cf-integration-tests</module>
-        <module>junit5</module>
+        <module>integration-tests</module>
+        <!--<module>junit5</module>
         <module>security</module>
         <module>web</module>
         -->
