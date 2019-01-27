@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>mvc</module>
+        <module>clients</module>
         <module>selenium</module>
         <module>webflux</module>
      </modules>
