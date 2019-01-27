@@ -1,4 +1,4 @@
-package selenium.webdriver;
+package selenium.old.webdriver;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;

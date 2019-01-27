@@ -1,4 +1,4 @@
-package selenium;
+package selenium.old;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import selenium.webdriver.HiddenPage;
-import selenium.webdriver.LoginPage;
+import selenium.old.webdriver.HiddenPage;
+import selenium.old.webdriver.LoginPage;
 
 /**
 	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
@@ -39,9 +39,11 @@ public class LoginControllerTest {
 
 	@Test
 	public void loginSuccess() {
-		HiddenPage.to(this.driver, LoginPage.class).form()
+		HiddenPage.to(this.driver, LoginPage.class)
+			.form()
 			.username(this.securityProperties.getUser().getName())
 			.password(this.securityProperties.getUser().getPassword())
-			.login(HiddenPage.class).assertAt();
+			.login(HiddenPage.class)
+			.assertAt();
 	}
 }

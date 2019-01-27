@@ -2,15 +2,8 @@ package selenium;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
-import java.security.Principal;
 
 /**
 	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
@@ -23,53 +16,17 @@ public class SeleniumApplication {
 	}
 }
 
-
-@ControllerAdvice
-class SecurityControllerAdvice {
-
-	@ModelAttribute("currentUser")
-	Principal currentUser(Principal principal) {
-		return principal;
-	}
-
-}
-
 @Controller
-class LoginController {
+class PageController {
 
-	@GetMapping("/")
-	String index() {
-		return "hidden";
+	@GetMapping("/p1.php")
+	String p1() {
+		return "p1";
 	}
 
-	@GetMapping("/logout-success")
-	String logout() {
-		return "logout";
+	@GetMapping("/p2.php")
+	String p2() {
+		return "p2";
 	}
-
-	@GetMapping("/login")
-	String login() {
-		return "login";
-	}
-
 }
 
-@EnableWebSecurity
-class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-
-		//@formatter:off
-		http.authorizeRequests().anyRequest().authenticated();
-
-		http
-		.logout()
-		.logoutUrl("/logout").logoutSuccessUrl("/logout-success")
-		.permitAll();
-
-		http.formLogin().loginPage("/login").permitAll();
-		//@formatter:on
-	}
-
-}
