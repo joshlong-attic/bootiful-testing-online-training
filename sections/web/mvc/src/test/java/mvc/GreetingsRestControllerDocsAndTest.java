@@ -22,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureRestDocs
 public class GreetingsRestControllerDocsAndTest {
 
-
 	@Autowired
 	private MockMvc mockMvc;
 
@@ -35,7 +34,6 @@ public class GreetingsRestControllerDocsAndTest {
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
 			.andExpect(jsonPath(".message").value("Hello!"))
 			.andDo(document("greetings"));
-
 	}
 
 	@Test
@@ -47,8 +45,6 @@ public class GreetingsRestControllerDocsAndTest {
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
 			.andExpect(jsonPath(".message").value("Hello Jane!"))
 			.andDo(document("greetings-by-name"));
-		;
-
 	}
 
 }

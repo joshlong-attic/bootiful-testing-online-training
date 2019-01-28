@@ -41,6 +41,5 @@ public class GreetingsRestControllerTest {
 			.andExpect(status().isOk())
 			.andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
 			.andExpect(jsonPath(".message").value("Hello Jane!"));
-
 	}
 }
