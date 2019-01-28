@@ -14,6 +14,8 @@ Arguably, most of these examples should be done in terms of non-reactive code. W
 * testing the data tier with our first test slice 
 * testing the repository custom finder method 
 * testing the web tier with webflux test slice 
+* testing the web tier with web test slice
+* spring rest docs 
 * `@MockBean`, Mockito and stubbing as a practice
 * selenium for a UI? 
 * introduce security into an app and test that? 
