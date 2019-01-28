@@ -30,18 +30,14 @@ import static org.springframework.test.web.client.response.MockRestResponseCreat
 @SpringBootTest
 public class MockRestServiceServerTest {
 
-	@Autowired
-	private ObjectMapper objectMapper;
-
-	@Autowired
-	private ReservationClient reservationClient;
-
-	@Autowired
-	private RestTemplate restTemplate;
-
 	private final Reservation one = new Reservation(1L, "One");
 	private final Reservation two = new Reservation(2L, "Two");
-
+	@Autowired
+	private ObjectMapper objectMapper;
+	@Autowired
+	private ReservationClient reservationClient;
+	@Autowired
+	private RestTemplate restTemplate;
 
 	@Test
 	public void getAllReservations() throws Exception {

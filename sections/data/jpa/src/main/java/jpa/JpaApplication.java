@@ -12,17 +12,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Collection;
 
+interface PetRepository extends JpaRepository<Pet, Long> {
+
+	Collection<Pet> findByName(String name);
+}
+
 @SpringBootApplication
 public class JpaApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(JpaApplication.class, args);
 	}
-}
-
-interface PetRepository extends JpaRepository<Pet, Long> {
-
-	Collection<Pet> findByName(String name);
 }
 
 @Entity

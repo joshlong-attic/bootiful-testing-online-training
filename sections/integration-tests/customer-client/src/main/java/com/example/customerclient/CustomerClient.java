@@ -23,7 +23,8 @@ public class CustomerClient {
 	public Collection<Customer> getCustomers() {
 
 		ParameterizedTypeReference<Collection<Customer>> ptr =
-			new ParameterizedTypeReference<Collection<Customer>>() { };
+			new ParameterizedTypeReference<Collection<Customer>>() {
+			};
 
 		return restTemplate.exchange(this.uri + "/customers", GET, null, ptr)
 			.getBody();

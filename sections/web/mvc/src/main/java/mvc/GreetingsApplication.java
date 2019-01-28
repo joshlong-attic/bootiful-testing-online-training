@@ -22,13 +22,6 @@ public class GreetingsApplication {
 @RestController
 class GreetingsRestController {
 
-	@Data
-	@AllArgsConstructor
-	@NoArgsConstructor
-	public static class Greeting {
-		private String message;
-	}
-
 	private String doGreeting(String name) {
 		String msg = "Hello%s!";
 		if (StringUtils.hasText(name)) {
@@ -47,6 +40,13 @@ class GreetingsRestController {
 	@GetMapping("/greetings/{name}")
 	Greeting greetByName(@PathVariable String name) {
 		return new Greeting(this.doGreeting(name));
+	}
+
+	@Data
+	@AllArgsConstructor
+	@NoArgsConstructor
+	public static class Greeting {
+		private String message;
 	}
 }
 

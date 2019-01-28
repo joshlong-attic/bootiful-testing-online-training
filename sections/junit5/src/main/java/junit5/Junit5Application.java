@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class Junit5Application {
 
+	public static void main(String args[]) {
+		SpringApplication.run(Junit5Application.class, args);
+	}
+
 	@GetMapping("/greeting/{name}")
 	String greet(@PathVariable String name) {
 		return "hello " + name + "!";
-	}
-
-	public static void main(String args[]) {
-		SpringApplication.run(Junit5Application.class, args);
 	}
 
 }

@@ -19,6 +19,10 @@ import static org.springframework.web.reactive.function.server.ServerResponse.ok
 @SpringBootApplication
 public class GreetingsApplication {
 
+	public static void main(String[] args) {
+		SpringApplication.run(GreetingsApplication.class, args);
+	}
+
 	@Bean
 	RouterFunction<ServerResponse> routes() {
 		String nameParamName = "name";
@@ -45,9 +49,5 @@ public class GreetingsApplication {
 	@NoArgsConstructor
 	public static class Greeting {
 		private String message;
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(GreetingsApplication.class, args);
 	}
 }

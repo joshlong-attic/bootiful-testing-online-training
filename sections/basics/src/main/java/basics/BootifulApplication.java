@@ -18,8 +18,8 @@ public class BootifulApplication {
 @Component
 class Bar {
 
-	public String getName (){
-		return "Bar" ;
+	public String getName() {
+		return "Bar";
 	}
 
 }

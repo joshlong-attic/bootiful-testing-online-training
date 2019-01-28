@@ -26,14 +26,12 @@ import java.util.Collection;
 @SpringBootTest
 public class WiremockTest {
 
-	@Autowired
-	private ObjectMapper objectMapper;
-
-	@Autowired
-	private ReservationClient reservationClient;
-
 	private final Reservation one = new Reservation(1L, "One");
 	private final Reservation two = new Reservation(2L, "Two");
+	@Autowired
+	private ObjectMapper objectMapper;
+	@Autowired
+	private ReservationClient reservationClient;
 
 	@Before
 	public void before() throws Exception {

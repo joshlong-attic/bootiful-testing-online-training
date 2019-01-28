@@ -11,16 +11,16 @@ import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
 import reactor.core.publisher.Flux;
 
 
+interface PetRepository extends ReactiveMongoRepository<Pet, String> {
+	Flux<Pet> findByName(String name);
+}
+
 @SpringBootApplication
 public class ReactiveMongoDbApplication {
 
 	public static void main(String args[]) {
 		SpringApplication.run(ReactiveMongoDbApplication.class, args);
 	}
-}
-
-interface PetRepository extends ReactiveMongoRepository<Pet, String> {
-	Flux<Pet> findByName(String name);
 }
 
 @Document
