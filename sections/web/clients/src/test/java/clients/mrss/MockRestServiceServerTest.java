@@ -41,7 +41,7 @@ public class MockRestServiceServerTest {
 
 	@Autowired
 	private RestTemplate restTemplate;
-	
+
 	@Test
 	public void getAllReservations() throws Exception {
 
