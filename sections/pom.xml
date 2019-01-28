@@ -13,7 +13,8 @@
         <module>data</module>
         <module>web</module>
         <module>integration-tests</module>
-        <!--<module>junit5</module>
+        <module>junit5</module>
+        <!--
         <module>security</module>
         <module>web</module>
         -->
