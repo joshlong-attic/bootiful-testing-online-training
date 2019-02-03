@@ -5,14 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>bt</groupId>
-    <artifactId>web</artifactId>
+    <artifactId>cdct</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>mvc</module>
-        <module>cdct</module>
-        <module>clients</module>
-        <module>selenium</module>
-        <module>webflux</module>
+        <module>consumer</module>
+        <module>producer</module>
     </modules>
 </project>
