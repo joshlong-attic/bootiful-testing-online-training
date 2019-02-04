@@ -13,6 +13,8 @@
         <module>cdct</module>
         <module>clients</module>
         <module>selenium</module>
+                <module>security</module>
+
         <module>webflux</module>
     </modules>
 </project>

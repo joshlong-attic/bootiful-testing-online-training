@@ -14,6 +14,5 @@
         <module>web</module>
         <module>integration-tests</module>
         <module>junit5</module>
-        <module>security</module>
     </modules>
 </project>
