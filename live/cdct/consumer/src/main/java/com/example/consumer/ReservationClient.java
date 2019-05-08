@@ -1,27 +1,21 @@
 package com.example.consumer;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
 @Component
-public class ReservationClient {
+@RequiredArgsConstructor
+class ReservationClient {
 
-	private final WebClient webClient;
+	private final WebClient client;
 
-	public ReservationClient(WebClient webClient) {
-		this.webClient = webClient;
-	}
-
-	public Flux<Reservation> getAllReservations() throws Exception {
-		return this.webClient
+	Flux<Reservation> getAllReservations() {
+		return this.client
 			.get()
 			.uri("http://localhost:8080/reservations")
 			.retrieve()
-			.bodyToFlux(Reservation.class)
-			;
+			.bodyToFlux(Reservation.class);
 	}
 }

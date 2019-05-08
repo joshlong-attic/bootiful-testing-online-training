@@ -1,26 +1,26 @@
 import org.springframework.cloud.contract.spec.Contract
 import org.springframework.cloud.contract.spec.internal.HttpMethods
+import org.springframework.http.MediaType
 
 Contract.make {
 
-    description("should return all Reservations")
+    description "should return all Reservations"
     request {
         url("/reservations")
         method(HttpMethods.HttpMethod.GET)
     }
     response {
+        status(200)
         body(
 
-                """
-                    [
-                        {"id":"1", "reservationName":"Ai"},
-                        {"id":"2", "reservationName":"Zhang"}
-                    ]
-                """
+                [
+                        ["id": "1", "name": "Jane"],
+                        ["id": "2", "name": "Joe"]
+                ]
         )
-        status(200)
         headers {
-            contentType(applicationJsonUtf8())
+            contentType(MediaType.APPLICATION_JSON_VALUE)
         }
+
     }
 }

@@ -1,12 +1,10 @@
 package com.example.producer;
 
-import org.springframework.data.mongodb.repository.ReactiveMongoRepository;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Flux;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
-public interface ReservationRepository extends ReactiveMongoRepository<Reservation, String > {
+public interface ReservationRepository extends ReactiveCrudRepository<Reservation, String> {
 
-	Flux<Reservation> findByReservationName (String rn);
+	// @Query
+	Flux<Reservation> findByName(String name);
 }

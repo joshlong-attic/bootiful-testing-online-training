@@ -1,6 +1,5 @@
 package com.example.producer;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,37 +8,30 @@ import org.springframework.test.context.junit4.SpringRunner;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
-@DataMongoTest
 @RunWith(SpringRunner.class)
+@DataMongoTest
 public class ReservationRepositoryTest {
 
-	private final Reservation one = new Reservation(null, "Francois");
-	private final Reservation two = new Reservation(null, "Marie-Jeanne");
-
 	@Autowired
-	private ReservationRepository reservationRepository;
+	private ReservationRepository repository;
 
 	@Test
-	public void findByName() throws Exception {
+	public void query() throws Exception {
 
-		Flux<Reservation> saved = Flux.just(this.one, this.two).flatMap(this.reservationRepository::save);
-		StepVerifier
-			.create(saved
-				.thenMany(this.reservationRepository.findByReservationName(this.one.getReservationName()))
+
+		Flux<Reservation> flux = this.repository
+			.deleteAll()
+			.thenMany(Flux
+				.just("A", "B", "C", "C")
+				.map(name -> new Reservation(null, name))
+				.flatMap(r -> this.repository.save(r))
 			)
-			.expectNextMatches(r -> r.getReservationName().equalsIgnoreCase(this.one.getReservationName()))
-			.verifyComplete();
+			.thenMany(this.repository.findByName("C"));
 
-
-	}
-
-	@After
-	public void after() {
 		StepVerifier
-			.create(this.reservationRepository.deleteAll())
+			.create(flux)
+			.expectNextCount(2)
 			.verifyComplete();
+
 	}
 }

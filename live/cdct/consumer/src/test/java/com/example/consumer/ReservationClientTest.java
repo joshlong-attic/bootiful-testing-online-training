@@ -1,30 +1,29 @@
 package com.example.consumer;
 
-import org.junit.Before;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.json.AutoConfigureJson;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.cloud.contract.stubrunner.spring.AutoConfigureStubRunner;
 import org.springframework.cloud.contract.stubrunner.spring.StubRunnerProperties;
 import org.springframework.test.context.junit4.SpringRunner;
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE)
-/*@AutoConfigureWireMock(port = 8080)
-@AutoConfigureJsonTesters*/
+import java.util.function.Predicate;
+
+import static org.springframework.util.StringUtils.hasText;
+
+@SpringBootTest
+//@AutoConfigureWireMock(port = 8080)
 @AutoConfigureStubRunner(
 	ids = "com.example:producer:+:8080",
-	stubsMode = StubRunnerProperties.StubsMode.LOCAL
-)
+	stubsMode = StubRunnerProperties.StubsMode.LOCAL)
+@AutoConfigureJson
+@RunWith(SpringRunner.class)
 public class ReservationClientTest {
-
-	private final Reservation one = new Reservation("1", "Ai");
-	private final Reservation two = new Reservation("2", "Zhang");
 
 	@Autowired
 	private ReservationClient client;
@@ -32,26 +31,41 @@ public class ReservationClientTest {
 //	@Autowired
 //	private ObjectMapper objectMapper;
 
-	@Before
-	public void setUp() throws Exception {
-
-	/*	String json = this.objectMapper
-			.writeValueAsString(Arrays.asList(this.one, this.two));
-
-		WireMock.stubFor(WireMock.get("/reservations")
-			.willReturn(WireMock.aResponse()
-				.withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_UTF8_VALUE)
-				.withBody(json)
-			));*/
-
-	}
-
 	@Test
 	public void getAllReservations() throws Exception {
 
+	/*
+	Collection<Reservation> re = Arrays.asList(
+			new Reservation("1", "Jane"),
+			new Reservation("2", "Joe"));
+
+		String json = objectMapper.writeValueAsString(re);
+
+		stubFor(
+			get(urlEqualTo("/reservations"))
+				.willReturn(aResponse()
+					.withBody(json)
+					.withHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+					.withStatus(HttpStatus.OK.value())
+				)
+		);
+*/
+
+		Flux<Reservation> allReservations = this.client.getAllReservations();
+
 		StepVerifier
-			.create(this.client.getAllReservations())
-			.expectNext(this.one, this.two)
+			.create(allReservations)
+			.expectNextMatches(predicate("1", "Jane"))
+			.expectNextMatches(predicate("2", "Joe"))
 			.verifyComplete();
 	}
+
+	Predicate<Reservation> predicate(String id, String name) {
+		return reservation -> hasText(reservation.getName())
+			&& reservation.getName().equalsIgnoreCase(name)
+			&& hasText(reservation.getId())
+			&& reservation.getId().equalsIgnoreCase(id);
+	}
+
+
 }

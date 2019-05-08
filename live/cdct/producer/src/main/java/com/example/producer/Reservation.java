@@ -3,16 +3,12 @@ package com.example.producer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-/**
-	* @author <a href="mailto:josh@joshlong.com">Josh Long</a>
-	*/
+import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Reservation {
-
-	private String id;
-	private String reservationName;
+@Document
+class Reservation {
+	private String id, name;
 }
