@@ -1,17 +1,19 @@
-package com.example.consumer;
+package com.example.reservationclient;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
 
 @Component
-@RequiredArgsConstructor
-class ReservationClient {
+public class ReservationClient {
 
 	private final WebClient client;
 
-	Flux<Reservation> getAllReservations() {
+	ReservationClient(WebClient client) {
+		this.client = client;
+	}
+
+	public Flux<Reservation> getAllReservations() {
 		return this.client
 			.get()
 			.uri("http://localhost:8080/reservations")

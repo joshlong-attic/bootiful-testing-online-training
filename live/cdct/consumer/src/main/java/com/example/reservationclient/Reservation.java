@@ -1,4 +1,5 @@
-package com.example.consumer;
+package com.example.reservationclient;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,5 +9,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Reservation {
-	private String id , name;
+	private String id, name;
 }

@@ -1,4 +1,4 @@
-package com.example.consumer;
+package com.example.reservationclient;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,14 +6,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-public class ConsumerApplication {
+public class ReservationClientApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerApplication.class, args);
+		SpringApplication.run(ReservationClientApplication.class, args);
 	}
 
 	@Bean
-	WebClient webClient(WebClient.Builder builder) {
+	WebClient client(WebClient.Builder builder) {
 		return builder.build();
 	}
 }
