@@ -1,14 +1,12 @@
-package com.example.producer;
-
+package com.example.reservationservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
-import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.StringUtils;
-import reactor.core.publisher.Mono;
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 @DataMongoTest
@@ -16,18 +14,17 @@ import reactor.test.StepVerifier;
 public class ReservationEntityTest {
 
 	@Autowired
-	private ReactiveMongoTemplate template;
+	private ReservationRepository repository;
 
 	@Test
 	public void persist() throws Exception {
-
-		Mono<Reservation> name = this.template.save(new Reservation(null, "Name"));
-
+		Flux<Reservation> just = Flux.just(new Reservation(null, "Jane"), new Reservation(null, "Joe"));
+		Flux<Reservation> reservationFlux = this.repository.saveAll(just);
 		StepVerifier
-			.create(name)
-			.expectNextMatches(reservation -> reservation.getName().equalsIgnoreCase("name") &&
-				!StringUtils.isEmpty(reservation.getId()))
+			.create(reservationFlux)
+			.expectNextCount(1)
+			.expectNextMatches(res -> res.getName().equalsIgnoreCase("Joe") && StringUtils.hasText(res.getId()))
 			.verifyComplete();
-
 	}
+
 }

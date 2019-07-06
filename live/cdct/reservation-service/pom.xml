@@ -6,18 +6,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.0.M2</version>
+        <version>2.2.0.M4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>producer</artifactId>
+    <artifactId>reservation-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>producer</name>
+    <name>reservation-service</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.BUILD-SNAPSHOT</spring-cloud.version>
+        <spring-cloud.version>Hoxton.BUILD-SNAPSHOT</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -69,19 +69,15 @@
             <plugin>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-contract-maven-plugin</artifactId>
+                <version>2.2.0.BUILD-SNAPSHOT</version>
                 <extensions>true</extensions>
-                <version>2.0.2.RELEASE</version>
                 <configuration>
                     <baseClassForTests>
-                        com.example.producer.BaseClass
+                        com.example.reservationservice.BaseClass
                     </baseClassForTests>
                     <testMode>EXPLICIT</testMode>
                 </configuration>
             </plugin>
-
-
-
-            <!--			-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
